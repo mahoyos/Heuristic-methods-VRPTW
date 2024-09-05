@@ -20,13 +20,13 @@ def process_file(file_path):
         return n, nodes_dict
 
 def create_complete_graph(n, nodes_dict):
-    G = nx.complete_graph(n + 1)  # Crear un grafo completo con n+1 nodos (incluyendo el depósito)
+    G = nx.complete_graph(n + 1)  
     
     for i in range(n + 1):
         for j in range(i + 1, n + 1):
             distance = calculate_euclidean_distance(nodes_dict[i]['x'], nodes_dict[i]['y'], nodes_dict[j]['x'], nodes_dict[j]['y'])
             G[i][j]['weight'] = distance
-            G[j][i]['weight'] = distance  # El grafo es no dirigido
+            G[j][i]['weight'] = distance  
     
     return G
 
@@ -39,16 +39,6 @@ def calculate_lower_bound(G):
     return total_distance
 
 def calculate_gap(current_solution, lower_bound):
-    """
-    Calcula el gap entre la solución actual y la cota inferior.
-
-    Parámetros:
-    current_solution (float): El valor de la solución actual obtenida.
-    lower_bound (float): El valor de la cota inferior.
-
-    Retorna:
-    float: El porcentaje del gap entre la solución actual y la cota inferior.
-    """
     if current_solution == 0:
         raise ValueError("La solución actual no puede ser 0.")
     
@@ -65,5 +55,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print(calculate_gap(374.785, 121.55800000000002))
 

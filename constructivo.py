@@ -142,7 +142,7 @@ def save_to_excel(results_dict, filename):
     wb.save(filename)
 
 def main():
-    folder_path = ""  # Change this to the route with your files
+    folder_path = ""  # Change this to the route with your test instances
     results_dict = {}
     for i in range(1, 19):
         file_name = f"VRPTW{i}.txt"
